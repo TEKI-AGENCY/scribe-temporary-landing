@@ -6,6 +6,9 @@
   --base-300: #f75828;
   --base-400: #cf152d;
   --base-500: #17100a;
+  --base-600: #c2e1df;
+  --base-800: #a3dad6;
+  --base-700: #aeb1dc;
 }
 
 * {
@@ -16,31 +19,29 @@
 
 body {
   background-color: #eef0f2;
+   font-family: "Barlow Condensed";
 }
 
-h1,
-a,
-p {
+h1, h2, a{
   color: var(--base-100);
   text-transform: uppercase;
   line-height: 0.85;
 }
 
 h1 {
-  font-family: "Barlow Condensed";
   font-size: clamp(3rem, 6vw, 9rem);
   font-weight: 800;
+  color: var(--base-700);
 }
 
-a {
-  font-family: "Barlow Condensed";
-  font-weight: 600;
-  font-size: 1.5rem;
-  text-decoration: none;
+h2 {
+  font-size: clamp(1.8rem, 2vw, 3rem);
+  font-weight: 800;
+  color: var(--base-800);
 }
 
-p {
-  font-family: "Instrument Sans";
+p, a {
+  color: var(--base-100);
   font-weight: 500;
 }
 
@@ -179,6 +180,19 @@ nav {
   width: 55%;
   text-align: center;
 }
+.hero-header > p {
+  margin-bottom: 1em;
+  margin-top: 1em;
+}
+
+.hero-header > p:last-of-type {
+  margin-bottom: 0em;
+}
+
+.hero-header > h2 {
+  margin-top: 2rem;
+}
+
 
 .hero-footer {
   position: absolute;
@@ -191,13 +205,17 @@ nav {
   align-items: flex-end;
   z-index: 0;
 }
+.hero-footer p {
+  text-transform: uppercase;
+  font-weight: 600;
+}
 
 .hero-img {
   position: absolute;
   left: 50%;
-  bottom: -15%;
+  bottom: -20%;
   transform: translateX(-50%);
-  width: 35%;
+  width: 22%;
   min-width: 250px;
   aspect-ratio: 1;
   display: flex;
@@ -208,7 +226,7 @@ nav {
 .hero-img-bg {
   width: 100%;
   aspect-ratio: 1;
-  background-color: var(--base-400);
+  background-color: var(--base-600);
   border-radius: 100%;
   transform-origin: center;
   transform: scale(0);
@@ -218,7 +236,7 @@ nav {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, 50%) rotate(15deg);
+  transform: translate(-50%, 50%);
   transform-origin: center;
   width: 130%;
 }

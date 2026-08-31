@@ -149,7 +149,7 @@ document.fonts.ready.then(() => {
   tl.to(".hero-img-bg", { scale: 1, duration: 1, ease: "power3.out" }, "<0.1");
   tl.to(
     ".hero-img img",
-    { y: "-50%", duration: 1, ease: "power3.out" },
+    { y: "-60%", duration: 1, ease: "power3.out" },
     "<0.3",
   );
 
