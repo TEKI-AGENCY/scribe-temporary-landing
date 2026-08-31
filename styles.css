@@ -180,16 +180,16 @@ nav {
   width: 55%;
   text-align: center;
 }
-.hero-header > p {
+.hero-copy > p {
   margin-bottom: 1em;
   margin-top: 1em;
 }
 
-.hero-header > p:last-of-type {
+.hero-copy > p:last-of-type {
   margin-bottom: 0em;
 }
 
-.hero-header > h2 {
+.hero-copy > h2 {
   margin-top: 2rem;
 }
 
@@ -246,6 +246,11 @@ nav {
 .hero-header h1 .char,
 .hero-header h1 .word {
   display: inline-block;
+  will-change: transform;
+}
+
+.hero-copy > * {
+  display: block;
   will-change: transform;
 }
 

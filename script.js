@@ -18,6 +18,7 @@ document.fonts.ready.then(() => {
 
   gsap.set(".nav-logo img", { scale: 0 });
   gsap.set(heading.chars, { y: 50, opacity: 0, scale: 0.5 });
+  gsap.set(".hero-copy > *", { y: 12, opacity: 0 });
   gsap.set(footerText.lines, { yPercent: 100 });
 
   const itemTargets = [
@@ -141,12 +142,24 @@ document.fonts.ready.then(() => {
   );
 
   tl.to(
+    ".hero-copy > *",
+    {
+      y: 0,
+      opacity: 1,
+      duration: 0.55,
+      stagger: 0.12,
+      ease: "power3.out",
+    },
+    ">0.1",
+  );
+
+  tl.to(
     footerText.lines,
     { yPercent: 0, duration: 0.75, stagger: 0.1, ease: "power3.out" },
     "<0.2",
   );
 
-  tl.to(".hero-img-bg", { scale: 1, duration: 1, ease: "power3.out" }, "<0.1");
+  tl.to(".hero-img-bg", { scale: 1, duration: 1, ease: "power3.out" }, ">0.1");
   tl.to(
     ".hero-img img",
     { y: "-60%", duration: 1, ease: "power3.out" },
