@@ -4,12 +4,6 @@ import { SplitText } from "gsap/SplitText";
 gsap.registerPlugin(SplitText);
 
 document.fonts.ready.then(() => {
-  const navLinks = SplitText.create(".nav-items a", {
-    type: "words",
-    mask: "words",
-    wordsClass: "nav-word",
-  });
-
   const heading = SplitText.create(".hero-header h1", {
     type: "lines, words, chars",
     charsClass: "char",
@@ -23,7 +17,6 @@ document.fonts.ready.then(() => {
   });
 
   gsap.set(".nav-logo img", { scale: 0 });
-  gsap.set(navLinks.words, { yPercent: 100 });
   gsap.set(heading.chars, { y: 50, opacity: 0, scale: 0.5 });
   gsap.set(footerText.lines, { yPercent: 100 });
 
@@ -51,6 +44,16 @@ document.fonts.ready.then(() => {
     duration: 1,
     stagger: 0.25,
     ease: "power2.inOut",
+  });
+
+  tl.set(".preloader-revealer-1, .preloader-revealer-2, .preloader-revealer-3", {
+    display: "none",
+  });
+
+  tl.to(".preloader-revealer-4", {
+    opacity: 0,
+    duration: 0.35,
+    ease: "power2.out",
   });
 
   tl.set(".preloader-revealer", { display: "none" });
@@ -89,7 +92,7 @@ document.fonts.ready.then(() => {
     "<",
   );
 
-  tl.set(".preloader-bg", { display: "none" });
+  tl.set(".preloader-backdrop", { display: "none" });
 
   tl.to({}, { duration: 1 });
 
@@ -122,11 +125,6 @@ document.fonts.ready.then(() => {
     ".nav-logo img",
     { scale: 1, duration: 0.75, ease: "power3.out" },
     "-=0.4",
-  );
-  tl.to(
-    navLinks.words,
-    { yPercent: 0, duration: 0.75, stagger: 0.05, ease: "power3.out" },
-    "<0.1",
   );
 
   tl.to(
