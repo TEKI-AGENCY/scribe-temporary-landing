@@ -29,13 +29,13 @@ h1, h2{
 }
 
 h1 {
-  font-size: clamp(2rem, 5vw, 8rem);
+  font-size: clamp(1.5rem, 7vw, 8rem);
   font-weight: 800;
   color: var(--base-700);
 }
 
 h2 {
-  font-size: clamp(1.2rem, 2vw, 3rem);
+  font-size: clamp(1.1rem, 2vw, 3rem);
   font-weight: 800;
   color: var(--base-800);
 }
