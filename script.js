@@ -1,5 +1,6 @@
 import gsap from "gsap";
 import { SplitText } from "gsap/SplitText";
+import { initDrawPathCursorEffect } from "./drawScript.js";
 
 gsap.registerPlugin(SplitText);
 
@@ -58,6 +59,7 @@ document.fonts.ready.then(() => {
   });
 
   tl.set(".preloader-revealer", { display: "none" });
+  tl.add(initDrawPathCursorEffect);
 
   items.forEach((item, i) => {
     const target = itemTargets[i];

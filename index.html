@@ -28,6 +28,10 @@
     <link rel="stylesheet" href="/styles.css" />
   </head>
   <body>
+    <div class="cursor-wrap">
+      <div data-cursor-dot class="cursor-dot"></div>
+      <canvas data-cursor-canvas class="cursor-canvas"></canvas>
+    </div>
     <div class="preloader">
       <div class="preloader-backdrop">
         <div class="preloader-bg"></div>
@@ -64,7 +68,7 @@
             <p>Estamos trabajando en una nueva experiencia digital. Muy pronto conocerás nuestra nueva plataforma de ventas en línea.</p>
             <h2>¿Hiciste una compra reciente o tienes alguna duda?</h2>
             <p>¡No te preocupes! Nuestro equipo de atención sigue activo para responder a tus inquietudes, dar seguimiento a tus pedidos o atender cualquier solicitud.</p>
-            <p>Escríbenos directamente a: 📩 scribecolombia2021@gmail.com</p>
+            <p>Escríbenos directamente a 📩 <a class="mail-link" href="mailto:scribecolombia2021@gmail.com">scribecolombia2021@gmail.com</a></p>
           </div>
         </div>
 
@@ -80,5 +84,6 @@
       </div>
     </section>
     <script type="module" src="/script.js"></script>
+    <script type="module" src="/drawScript.js"></script>
   </body>
 </html>
