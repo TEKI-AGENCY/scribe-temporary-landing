@@ -4,7 +4,13 @@ import { initDrawPathCursorEffect } from "./drawScript.js";
 
 gsap.registerPlugin(SplitText);
 
-document.fonts.ready.then(() => {
+// wait for full page load (not just DOM/fonts) so the stylesheet is guaranteed applied
+// before layout-dependent values (e.g. clip-path circle center) are computed
+const pageLoaded = document.readyState === "complete"
+  ? Promise.resolve()
+  : new Promise((resolve) => window.addEventListener("load", resolve, { once: true }));
+
+Promise.all([document.fonts.ready, pageLoaded]).then(() => {
   const heading = SplitText.create(".hero-header h1", {
     type: "lines, words, chars",
     charsClass: "char",
