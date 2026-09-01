@@ -35,7 +35,7 @@ h1 {
 }
 
 h2 {
-  font-size: clamp(1.3rem, 2vw, 3rem);
+  font-size: clamp(1.2rem, 2vw, 3rem);
   font-weight: 800;
   color: var(--base-800);
 }
