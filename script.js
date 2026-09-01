@@ -24,6 +24,9 @@ Promise.all([document.fonts.ready, pageLoaded]).then(() => {
   });
 
   gsap.set(".nav-logo img", { scale: 0 });
+  // set explicitly so GSAP's from/to clip-path values always share the same "at x y" structure
+  // (minified CSS may drop the default "at 50% 50%", which breaks GSAP's numeric interpolation)
+  gsap.set(".preloader-revealer", { clipPath: "circle(0% at 50% 50%)" });
   gsap.set(heading.chars, { y: 50, opacity: 0, scale: 0.5 });
   gsap.set(".hero-copy > *", { y: 12, opacity: 0 });
   gsap.set(footerText.lines, { yPercent: 100 });
