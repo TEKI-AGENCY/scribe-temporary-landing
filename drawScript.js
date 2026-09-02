@@ -21,13 +21,12 @@ export function initDrawPathCursorEffect() {
   const dot = document.querySelector('[data-cursor-dot]');
   const canvas = document.querySelector('[data-cursor-canvas]');
   const ctx = canvas.getContext('2d');
-  const heading = document.querySelector('.hero-header h1');
 
   let points = [];
   let hasMouse = false;
   let runningWidth = strokeMinWidth;
 
-  const color = getComputedStyle(heading).color.match(/\d+(?:\.\d+)?/g).slice(0, 3);
+  const color = getComputedStyle(canvas).color.match(/\d+(?:\.\d+)?/g).slice(0, 3);
 
   gsap.set(dot, { xPercent: -50, yPercent: -50, opacity: 0 });
   const xTo = gsap.quickTo(dot, 'x', { duration: cursorLag, ease: 'power3' });

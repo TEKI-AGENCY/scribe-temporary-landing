@@ -31,23 +31,6 @@ Promise.all([document.fonts.ready, pageLoaded]).then(() => {
   gsap.set(".hero-copy > *", { y: 12, opacity: 0 });
   gsap.set(footerText.lines, { yPercent: 100 });
 
-  const itemTargets = [
-    { x: "-20vw", y: "-30vh", rotation: -20 },
-    { x: "25vw", y: "-20vh", rotation: 15 },
-    { x: "-32vw", y: "30vh", rotation: 12 },
-    { x: "15vw", y: "25vh", rotation: -15 },
-  ];
-
-  const EXIT_DISTANCE = 3.5;
-  const itemExits = itemTargets.map((target) => ({
-    x: parseFloat(target.x) * EXIT_DISTANCE + "vw",
-    y: parseFloat(target.y) * EXIT_DISTANCE + "vh",
-    rotation: target.rotation * 2.5,
-  }));
-
-  const items = gsap.utils.toArray(".item");
-  const floatingTweens = [];
-
   const tl = gsap.timeline({ delay: 0.5 });
 
   tl.to(".preloader-revealer", {
@@ -70,67 +53,20 @@ Promise.all([document.fonts.ready, pageLoaded]).then(() => {
   tl.set(".preloader-revealer", { display: "none" });
   tl.add(initDrawPathCursorEffect);
 
-  items.forEach((item, i) => {
-    const target = itemTargets[i];
-    const image = item.querySelector("img");
-
-    tl.to(
-      item,
-      {
-        x: target.x,
-        y: target.y,
-        scale: 1,
-        rotation: target.rotation,
-        duration: 1,
-        ease: "power3.out",
-        onStart: () => {
-          floatingTweens[i] = gsap.to(image, {
-            y: gsap.utils.random(-15, -25),
-            duration: gsap.utils.random(1.5, 2.5),
-            ease: "sine.inOut",
-            yoyo: true,
-            repeat: -1,
-            delay: gsap.utils.random(0, 0.5),
-          });
-        },
-      },
-      i === 0 ? "-=0.55" : "<0.075",
-    );
-  });
-
   tl.to(
     ".preloader-logo",
     { scale: 1, opacity: 1, duration: 1, ease: "power3.out" },
-    "<",
+    "-=0.325",
   );
 
   tl.set(".preloader-backdrop", { display: "none" });
 
   tl.to({}, { duration: 1 });
 
-  tl.add(() => floatingTweens.forEach((tween) => tween.kill()));
-
-  items.forEach((item, i) => {
-    const exit = itemExits[i];
-
-    tl.to(
-      item,
-      {
-        x: exit.x,
-        y: exit.y,
-        scale: 2.5,
-        rotation: exit.rotation,
-        duration: 0.75,
-        ease: "power2.in",
-      },
-      i === 0 ? ">" : "<0.075",
-    );
-  });
-
   tl.to(
     ".preloader-logo",
     { y: "-120vh", scale: 2.5, duration: 0.75, ease: "power2.in" },
-    "<",
+    "+=0.225",
   );
 
   tl.to(
