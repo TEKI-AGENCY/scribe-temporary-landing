@@ -286,15 +286,11 @@ nav {
 
 @media (max-width: 700px) {
   h1 {
-    font-size: clamp(1.2rem, 8vw, 2rem);
+    font-size: clamp(1.3rem, 8vw, 2rem);
   }
 
   h2 {
-    font-size: clamp(1rem, 5vw, 1.5rem);
-  }
-
-  p {
-    font-size: 0.7rem;
+    font-size: clamp(1.2rem, 5vw, 1.5rem);
   }
 
   nav {
@@ -310,7 +306,7 @@ nav {
   }
 
   .hero-copy > p {
-    font-size: 1.15rem;
+    font-size: 0.9rem;
   }
 
   .hero-copy > h2 {
