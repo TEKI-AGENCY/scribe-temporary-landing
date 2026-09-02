@@ -290,7 +290,7 @@ nav {
   }
 
   h2 {
-    font-size: clamp(1.2rem, 5vw, 1.5rem);
+    font-size: clamp(1.3rem, 5vw, 1.5rem);
   }
 
   nav {
@@ -306,7 +306,7 @@ nav {
   }
 
   .hero-copy > p {
-    font-size: 0.9rem;
+    font-size: 1rem;
   }
 
   .hero-copy > h2 {
