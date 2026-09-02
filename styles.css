@@ -286,11 +286,15 @@ nav {
 
 @media (max-width: 700px) {
   h1 {
-    font-size: clamp(2rem, 12vw, 3rem);
+    font-size: clamp(1.2rem, 8vw, 2rem);
   }
 
   h2 {
-    font-size: clamp(1.2rem, 8vw, 1.8rem);
+    font-size: clamp(1rem, 5vw, 1.5rem);
+  }
+
+  p {
+    font-size: 0.8rem;
   }
 
   nav {
@@ -298,7 +302,7 @@ nav {
   }
 
   .nav-logo img {
-    width: 6rem;
+    width: 4rem;
   }
 
   .hero-content {
