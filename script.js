@@ -55,24 +55,24 @@ Promise.all([document.fonts.ready, pageLoaded]).then(() => {
 
   tl.to(
     ".preloader-logo",
-    { scale: 1, opacity: 1, duration: 1, ease: "power3.out" },
+    { scale: 1, opacity: 1, duration: 0.5, ease: "power3.out" },
     "-=0.325",
   );
 
   tl.set(".preloader-backdrop", { display: "none" });
 
-  tl.to({}, { duration: 1 });
+  tl.to({}, { duration: 0.5 });
 
   tl.to(
     ".preloader-logo",
-    { y: "-120vh", scale: 2.5, duration: 0.75, ease: "power2.in" },
-    "+=0.225",
+    { y: "-120vh", scale: 2.5, duration: 0.375, ease: "power2.in" },
+    "+=0.1125",
   );
 
   tl.to(
     ".nav-logo img",
     { scale: 1, duration: 0.75, ease: "power3.out" },
-    "-=0.4",
+    "-=0.2",
   );
 
   tl.to(
