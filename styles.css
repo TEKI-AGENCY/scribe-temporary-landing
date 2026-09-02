@@ -26,7 +26,7 @@ h1, h2{
 }
 
 h1 {
-  font-size: clamp(2rem, 6vw, 7rem);
+  font-size: clamp(2rem, 5vw, 6rem);
   font-weight: 800;
   color: var(--base-200);
 }
@@ -149,7 +149,7 @@ nav {
 
 .hero-header {
   position: absolute;
-  top: 32%;
+  top: 35%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 70%;
@@ -197,7 +197,7 @@ nav {
   left: 50%;
   bottom: -15%;
   transform: translateX(-50%);
-  width: 25%;
+  width: 40dvh;
   min-width: 250px;
   aspect-ratio: 1;
   display: flex;

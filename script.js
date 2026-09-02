@@ -35,8 +35,8 @@ Promise.all([document.fonts.ready, pageLoaded]).then(() => {
 
   tl.to(".preloader-revealer", {
     clipPath: "circle(100% at 50% 50%)",
-    duration: 1,
-    stagger: 0.25,
+    duration: 0.7,
+    stagger: 0.175,
     ease: "power2.inOut",
   });
 
@@ -46,7 +46,7 @@ Promise.all([document.fonts.ready, pageLoaded]).then(() => {
 
   tl.to(".preloader-revealer-4", {
     opacity: 0,
-    duration: 0.35,
+    duration: 0.245,
     ease: "power2.out",
   });
 
@@ -55,13 +55,13 @@ Promise.all([document.fonts.ready, pageLoaded]).then(() => {
 
   tl.to(
     ".preloader-logo",
-    { scale: 1, opacity: 1, duration: 0.5, ease: "power3.out" },
-    "-=0.325",
+    { scale: 1, opacity: 1, duration: 0.25, ease: "power3.out" },
+    "-=0.39",
   );
 
   tl.set(".preloader-backdrop", { display: "none" });
 
-  tl.to({}, { duration: 0.5 });
+  tl.to({}, { duration: 0.125 });
 
   tl.to(
     ".preloader-logo",
