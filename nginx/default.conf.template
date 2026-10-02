@@ -1,0 +1,90 @@
+# Railway injects PORT. The official nginx image renders this template with envsubst.
+
+# Long Shopify slugs need a larger hash bucket for nginx map keys.
+map_hash_bucket_size 128;
+
+# 1) Normalize Shopify duplicate product URLs internally for redirect lookup.
+# Example: /collections/cuadernos/products/foo -> /products/foo
+map $uri $scribe_lookup_uri {
+    default $uri;
+    ~^/collections/[^/]+(?<scribe_product_uri>/products/[^/]+)$ $scribe_product_uri;
+}
+
+# 2) Exact legacy URL map supplied by SEO.
+# $uri excludes the query string, so ?variant=, ?page=, ?sort_by=, etc. do not carry over.
+map $scribe_lookup_uri $scribe_301 {
+    default "";
+    include /etc/nginx/redirects.map;
+}
+
+# 3) Shopify technical/store routes that no longer have an equivalent.
+map $uri $scribe_gone {
+    default 0;
+    ~^/(cart|account|checkouts|customer_authentication)(/|$) 1;
+    ~^/cdn/shop/ 1;
+    ~^/(?:collections/[^/]+/)?products/[^/]+\.(json|js|oembed)$ 1;
+}
+
+server {
+    listen 80;
+    server_name scribe.com.co www.scribe.com.co;
+
+    root /usr/share/nginx/html;
+    index index.html;
+
+    # Basic hardening.
+    server_tokens off;
+    add_header X-Content-Type-Options "nosniff" always;
+    add_header Referrer-Policy "strict-origin-when-cross-origin" always;
+
+    # Removed Shopify functionality/assets: answer directly with 410.
+    if ($scribe_gone) {
+        return 410;
+    }
+
+    # Exact SEO redirects. Absolute canonical URLs guarantee the final host and strip query strings.
+    if ($scribe_301 != "") {
+        return 301 $scribe_301;
+    }
+
+    # Canonical host for current/new URLs. Legacy mapped URLs above go straight to their final destination.
+    if ($host != "www.scribe.com.co") {
+        return 301 https://www.scribe.com.co$uri$is_args$args;
+    }
+
+    # Static site. Directories such as /cuadernos/ resolve to /cuadernos/index.html.
+    location / {
+        try_files $uri $uri/ =404;
+    }
+
+    # Keep a real 404 status while serving a branded static page.
+    error_page 404 /404.html;
+    location = /404.html {
+        internal;
+    }
+
+    # Static asset caching. HTML/XML/TXT stay uncached so emergency updates propagate quickly.
+    location ~* \.(?:css|js|svg|png|jpg|jpeg|webp|gif|ico|woff2?)$ {
+        expires 7d;
+        add_header Cache-Control "public, max-age=604800";
+        try_files $uri =404;
+    }
+
+    location = /robots.txt {
+        add_header Cache-Control "no-cache";
+        try_files $uri =404;
+    }
+
+    location = /sitemap.xml {
+        add_header Cache-Control "no-cache";
+        try_files $uri =404;
+    }
+
+    # Do not expose dotfiles.
+    location ~ /\. {
+        deny all;
+    }
+
+    gzip on;
+    gzip_types text/plain text/css application/javascript application/json application/xml image/svg+xml;
+}

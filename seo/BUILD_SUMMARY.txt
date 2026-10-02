@@ -1,0 +1,7 @@
+Scribe emergency static build — styled edition
+
+- Home preserved from the Vite dist supplied by the user.
+- 12 emergency SEO destination pages added.
+- Internal pages reuse the landing build CSS and add /assets/internal.css.
+- 250 exact legacy redirect entries preserved from the SEO redirect map.
+- Shopify duplicate product patterns, removed store routes, 404, robots and sitemap handled by nginx/static files.

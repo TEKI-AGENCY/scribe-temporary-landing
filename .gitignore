@@ -1,0 +1,29 @@
+# macOS
+.DS_Store
+
+# Editor / IDE
+.vscode/
+.idea/
+
+# Logs
+*.log
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.pyc
+
+# Validation outputs
+redirect-validation.csv
+redirect-validation.txt
+
+# Temporary files
+*.tmp
+*.temp
+
+# Archives
+*.zip
