@@ -6,6 +6,10 @@ body.internal-page {
   background-size: 14px 14px;
 }
 
+p, a {
+    font-weight: 400;
+}
+
 .internal-nav {
   position: relative;
   z-index: 2;
@@ -89,6 +93,7 @@ body.internal-page {
   overflow: hidden;
   
   background: var(--base-400);
+  align-self: flex-start;
 }
 
 .internal-media img {
@@ -110,6 +115,12 @@ body.internal-page {
   font-size: 0.75rem;
   font-weight: 600;
   text-transform: uppercase;
+}
+
+.text-box {
+  display: flex;
+  flex-direction: column;
+  gap:1.5rem;
 }
 
 .error-page .internal-page h1,
